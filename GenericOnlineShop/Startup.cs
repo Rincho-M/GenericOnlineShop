@@ -8,21 +8,39 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using GenericOnlineShop.Db;
+using GenericOnlineShop.Services;
 
 namespace GenericOnlineShop
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; }
+        private readonly IConfiguration _configuration;
 
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<AppDbContext>(options =>
+            {
+                string connectionString = _configuration.GetConnectionString("Dev");
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+            });
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(30);
+                options.Cookie.Name = "GenericOnlineShop.Session";
+                options.Cookie.HttpOnly = true;
+            });
+
+            services.AddScoped<IReadWriteDbService, ReadWriteDbService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -42,13 +60,15 @@ namespace GenericOnlineShop
 
             app.UseRouting();
 
-            //app.UseAuthorization();
+            app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

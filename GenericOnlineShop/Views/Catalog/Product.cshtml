@@ -1,0 +1,27 @@
+﻿@model GenericOnlineShop.Views.Catalog.ProductModel;
+@{
+    //Html.ActionLink("To cart", "AddToCart", "Catalog", new { id = item.Id }, null)
+}
+<h1>@Model.ProductName</h1>
+<div class="container">
+    @foreach (var item in Model.Products)
+    {
+        <div class="row py-2">
+            <div class="col">
+                <div class="p-2">
+                    <p>@item.Name</p>
+                    <p>@item.Price</p>
+                </div>
+            </div>
+            <div class="col">
+                <button id="@item.Id" class="p-2 to-cart-button">
+                    <p>To cart</p>
+                </button>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script src="~/js/cart.js"></script>
+}

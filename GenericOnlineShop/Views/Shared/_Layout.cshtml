@@ -1,0 +1,93 @@
+﻿<html>
+    <head>
+        <title>@ViewData["Title"]</title>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="~/css/site.css"/>
+    </head>
+    <body>
+        <header class="shadow-sm">
+            <div class="container">
+                <div class="row d-flex justify-content-center align-items-end p-3">
+                    <div class="category-block col d-flex justify-content-center px-2">
+                        <div class="logo-wrapper mr-3 mb-1 mt-1">
+                            <a href="http://localhost:5005/home/index">
+                                <img class="svg-img" src="~/images/logo.svg" />
+                            </a>
+                        </div>
+                        <div class="category-button-wrapper">
+                            <button id="categoryButton" class="category-button p-1">
+                                <div class="category-button-content d-flex">
+                                    <div class="category-img-wrapper p-1">
+                                        <img class="svg-img" src="~/images/listicon.svg" />
+                                    </div>
+                                    <div class="px-1">
+                                        <p class="m-0">Shop by category</p>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-6 px-2">
+                        <div class="search-form-wrapper">
+                            <form class="m-0" action="/">
+                                <input class="search" type="search" placeholder="Search" />
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col d-flex justify-content-center px-2">
+                        <div class="mr-2">
+                            <a href="http://localhost:5005/account/index">
+                                <div>
+                                    <img />
+                                </div>
+                                <div>
+                                    <p>Sign in</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="http://localhost:5005/cart/index">
+                                <div>
+                                    <img />
+                                </div>
+                                <div>
+                                    <p>Cart</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div id="categoryPopupBlock" class="category-popup-block">
+            <div id="popupBackgroundShade" class="popup-background-shade"></div>
+            <div id="categoryPopup" class="container category-popup">
+                <div class="row d-flex">
+                    <div class="col">
+                        @await Component.InvokeAsync("CatalogNavigation");
+                    </div>
+                    <div class="col">
+                        <p>Here is popup!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <main>
+                @RenderBody()
+            </main>
+        </div>
+        <footer class="bg-light">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col">
+                        <p>All kinds of footer information here</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/js/site.js"></script>
+        @RenderSection("Scripts", required: false)
+    </body>
+</html>

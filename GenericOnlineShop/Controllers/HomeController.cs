@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using GenericOnlineShop.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,8 +10,14 @@ namespace GenericOnlineShop.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IReadWriteDbService _dbService;
+        public HomeController(IReadWriteDbService dbService)
+        {
+            _dbService = dbService;
+        }
+
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             return View();
         }

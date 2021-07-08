@@ -1,0 +1,24 @@
+﻿@model GenericOnlineShop.Models.CartModel
+@{
+    ViewData["Title"] = "Cart";
+}
+<h1>Your order</h1>
+<div class="container">
+    @foreach (var item in Model.Products)
+    {
+        <div class="row py-2">
+            <div class="col">
+                <div class="p-2">
+                    <p>@item.Name</p>
+                    <p>@item.Price</p>
+                </div>
+            </div>
+            <div class="col">
+                <input class="input-number form-control" type="number" min="1" step="1" value="1"/>
+            </div>
+        </div>
+    }
+</div>
+<div class="p-3">
+    @Html.ActionLink("Purchase", "a", "b")
+</div>

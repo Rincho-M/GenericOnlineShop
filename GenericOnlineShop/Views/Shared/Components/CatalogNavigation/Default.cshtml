@@ -1,0 +1,10 @@
+﻿@model GenericOnlineShop.Models.CatalogNavigationModel
+
+@foreach (var item in Model.ProductTypeNames)
+{
+    <div class="category-link-wrapper">
+        <a href=@String.Format("http://localhost:5005/catalog/product/{0}", item)>
+            <p>@item</p>
+        </a>
+    </div>
+}
