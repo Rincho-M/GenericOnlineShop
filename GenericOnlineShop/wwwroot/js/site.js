@@ -1,12 +1,26 @@
 ﻿$("document").ready(() => {
-    $("#categoryButton").on("click", OpenCategories);
-    $("#popupBackgroundShade").on("click", CloseCategories);
+    $("#catalogButton").on("click", OpenCategories);
+    $("#catalogPopupBgShade").on("click", CloseCategories);
+
+    if ($("#accountButton > a").attr("href") == "") {
+        $("#accountButton > a").removeAttr("href");
+        $("#accountButton").on("click", OpenSignInWindow);
+        $("#signInPopupBgShade").on("click", CloseSignInWindow);
+    }
 })
 
 function OpenCategories() {
-    $("#categoryPopupBlock").css("display", "block");
+    $("#catalogPopupBlock").css("display", "block");
 }
 
 function CloseCategories() {
-    $("#categoryPopupBlock").css("display", "none");
+    $("#catalogPopupBlock").css("display", "none");
+}
+
+function OpenSignInWindow() {
+    $("#signInPopupBlock").css("display", "block");
+}
+
+function CloseSignInWindow() {
+    $("#signInPopupBlock").css("display", "none");
 }

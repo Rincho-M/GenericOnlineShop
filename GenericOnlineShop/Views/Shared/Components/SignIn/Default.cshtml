@@ -1,0 +1,19 @@
+﻿@model GenericOnlineShop.Models.SignInModel
+
+<div id="signInPopupBgShade" class="popup-background-shade"></div>
+<div class="signin-popup">
+    <div class="d-flex">
+        <p>Sign in</p>
+        <p>/</p>
+        <p>Sign up</p>
+    </div>
+    <div>
+        <form id="signInForm">
+            <input id="email" name="email" placeholder="Email" />
+            <span id="emailErrors" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+            <input id="password" name="password" placeholder="Password" />
+            <span id="passwordErrors" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+            <button id="submitButton">Sign in</button>
+        </form>
+    </div>
+</div>

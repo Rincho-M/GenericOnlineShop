@@ -19,7 +19,7 @@ namespace GenericOnlineShop.Controllers
             _readWriteDbService = readWriteDbService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Cart()
         {
             Console.WriteLine("Index in Cart shitting ");
             var cart = HttpContext.Session.GetList<uint>(CartKey);

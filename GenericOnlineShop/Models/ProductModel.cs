@@ -1,11 +1,12 @@
-﻿using GenericOnlineShop.Models;
+﻿using GenericOnlineShop.Db.Models;
+using GenericOnlineShop.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GenericOnlineShop.Views.Catalog
+namespace GenericOnlineShop.Models
 {
     public class ProductModel
     {

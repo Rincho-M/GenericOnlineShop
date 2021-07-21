@@ -3,13 +3,14 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace GenericOnlineShop.Models
+namespace GenericOnlineShop.Db.Models
 {
     public partial class Product
     {
         public Product()
         {
             ProductImages = new HashSet<ProductImage>();
+            ProductInOrders = new HashSet<ProductInOrder>();
         }
 
         public uint Id { get; set; }
@@ -24,5 +25,6 @@ namespace GenericOnlineShop.Models
         public virtual Manufacturer Manufacturer { get; set; }
         public virtual ProductType Type { get; set; }
         public virtual ICollection<ProductImage> ProductImages { get; set; }
+        public virtual ICollection<ProductInOrder> ProductInOrders { get; set; }
     }
 }

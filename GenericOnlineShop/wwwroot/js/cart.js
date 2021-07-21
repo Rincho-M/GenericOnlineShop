@@ -1,13 +1,4 @@
 ﻿$("document").ready(() => {
-    $(".to-cart-button").on("click", ToCart);
-})
-
-function ToCart() {
-    console.log(event.target.id);
-
-    $.ajax("/catalog/addtocart", {
-        type: "POST",
-        data: JSON.stringify({ id: event.target.id }),
-        contentType: "application/json"
-    });
-}
+    $("input.input-number").prev().on("click", () => { $("input.input-number")[0].stepUp(); });
+    $("input.input-number").next().on("click", () => { $("input.input-number")[0].stepDown(); });
+});

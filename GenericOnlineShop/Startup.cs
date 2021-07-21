@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using GenericOnlineShop.Db;
 using GenericOnlineShop.Services;
+using Microsoft.AspNetCore.Identity;
 
 namespace GenericOnlineShop
 {
@@ -40,6 +41,13 @@ namespace GenericOnlineShop
                 options.Cookie.HttpOnly = true;
             });
 
+            services.AddAuthentication("CookieAuthN")
+                .AddCookie("CookieAuthN", options =>
+                {
+                    options.Cookie.Name = "GenericOnlineShop.AuthN";
+                    options.LoginPath = "/Home";
+                });
+
             services.AddScoped<IReadWriteDbService, ReadWriteDbService>();
         }
 
@@ -60,15 +68,23 @@ namespace GenericOnlineShop
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "cart",
+                    pattern: "cart",
+                    defaults: new { controller = "Cart", action = "Cart" });
+                endpoints.MapControllerRoute(
+                    name: "account",
+                    pattern: "account",
+                    defaults: new { controller = "Account", action = "Index" });
+                endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{productTypeName?}");
             });
         }
     }

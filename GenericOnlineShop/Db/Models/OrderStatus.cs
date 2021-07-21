@@ -5,16 +5,16 @@ using System.Collections.Generic;
 
 namespace GenericOnlineShop.Db.Models
 {
-    public partial class Manufacturer
+    public partial class OrderStatus
     {
-        public Manufacturer()
+        public OrderStatus()
         {
-            Products = new HashSet<Product>();
+            Orders = new HashSet<Order>();
         }
 
         public uint Id { get; set; }
         public string Name { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

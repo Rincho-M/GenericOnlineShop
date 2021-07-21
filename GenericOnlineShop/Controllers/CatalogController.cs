@@ -1,6 +1,5 @@
 ﻿using GenericOnlineShop.Services;
 using GenericOnlineShop.Models;
-using GenericOnlineShop.Views.Catalog;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -20,10 +19,11 @@ namespace GenericOnlineShop.Controllers
             _readWriteDbService = readWriteDbService;
         }
 
-        public async Task<IActionResult> Product(string id)
+        public async Task<IActionResult> Product(string productTypeName)
         {
-            var products = await _readWriteDbService.ReadProducts(id);
-            var productModel = new ProductModel(id, products);
+            Console.WriteLine("int catalog/product : " + productTypeName);
+            var products = await _readWriteDbService.ReadProducts(productTypeName);
+            var productModel = new ProductModel(productTypeName, products);
             return View(productModel);
         }
 

@@ -56,7 +56,7 @@
 
         container.removeClass("field-validation-valid").addClass("field-validation-error");
         error.data("unobtrusiveContainer", container);
-
+        console.log("this is callling");
         if (replace) {
             container.empty();
             error.removeClass("input-validation-error").appendTo(container);
@@ -69,7 +69,7 @@
     function onErrors(event, validator) {  // 'this' is the form element
         var container = $(this).find("[data-valmsg-summary=true]"),
             list = container.find("ul");
-
+        
         if (list && list.length && validator.errorList.length) {
             list.empty();
             container.addClass("validation-summary-errors").removeClass("validation-summary-valid");

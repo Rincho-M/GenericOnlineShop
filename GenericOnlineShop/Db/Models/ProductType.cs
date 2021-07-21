@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace GenericOnlineShop.Models
+namespace GenericOnlineShop.Db.Models
 {
     public partial class ProductType
     {

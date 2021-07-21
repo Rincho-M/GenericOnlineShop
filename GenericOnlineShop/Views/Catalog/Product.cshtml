@@ -1,9 +1,9 @@
-﻿@model GenericOnlineShop.Views.Catalog.ProductModel;
+﻿@model GenericOnlineShop.Models.ProductModel;
 @{
     //Html.ActionLink("To cart", "AddToCart", "Catalog", new { id = item.Id }, null)
 }
 <h1>@Model.ProductName</h1>
-<div class="container">
+<div id="toCartHandler" class="container">
     @foreach (var item in Model.Products)
     {
         <div class="row py-2">
@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="col">
-                <button id="@item.Id" class="p-2 to-cart-button">
+                <button name="toCart" class="p-2" value="@item.Id">
                     <p>To cart</p>
                 </button>
             </div>
@@ -23,5 +23,5 @@
 </div>
 
 @section Scripts {
-    <script src="~/js/cart.js"></script>
+    <script src="~/js/catalog.js"></script>
 }

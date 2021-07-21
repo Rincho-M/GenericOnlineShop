@@ -21,6 +21,10 @@ namespace GenericOnlineShop.ViewComponents
         {
             var productTypes = await _readWriteDbService.Read();
             var data = productTypes.Select(t => t.Name);
+            foreach (var item in data)
+            {
+                Console.WriteLine(item);
+            }
             var model = new CatalogNavigationModel(data);
 
             return View(model);
